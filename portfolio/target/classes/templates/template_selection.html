@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Template | Portfoliify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #0f172a; color: white; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        header { padding: 40px 20px; text-align: center; }
+        header h1 span { color: #818cf8; }
+        header p { color: #94a3b8; }
+        .template-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; width: 90%; max-width: 1200px; padding: 40px 0; }
+        .template-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; position: relative; transition: 0.3s; }
+        .template-card:hover { transform: translateY(-10px); border-color: #818cf8; }
+        .preview-box { height: 180px; background: linear-gradient(45deg, #1e293b, #334155); display: flex; justify-content: center; align-items: center; }
+        .preview-box i { font-size: 3.5rem; color: rgba(255, 255, 255, 0.2); transition: 0.3s; }
+        .template-card:hover .preview-box i { color: #818cf8; transform: scale(1.1) rotate(5deg); }
+        .details { padding: 20px; text-align: center; }
+        .details h3 { font-size: 1.2rem; margin-bottom: 15px; }
+        .select-btn { background: #6366f1; color: white; border: none; padding: 10px 25px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .template-card:hover .select-btn { background: #a855f7; }
+        .badge { position: absolute; top: 15px; right: 15px; background: rgba(0, 0, 0, 0.5); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(255, 255, 255, 0.1); }
+        footer { padding: 30px; text-align: center; color: #64748b; margin-top: auto; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to <span>Portfoliify</span></h1>
+    <p>Select a template that fits your professional personality.</p>
+</header>
+
+<div class="template-grid" id="grid"></div>
+
+<footer>Portfoliify@ragul-fullstackdeveloper</footer>
+
+<script>
+    const grid = document.getElementById('grid');
+
+    // Updated Array with exactly 10 professional developer themes
+    const designs = [
+        { id: 1, name: "Minimalist Pro", icon: "fa-terminal" },
+        { id: 2, name: "Creative Dark", icon: "fa-palette" },
+        { id: 3, name: "Corporate Sleek", icon: "fa-briefcase" },
+        { id: 4, name: "Modern Glass", icon: "fa-gem" },
+        { id: 5, name: "Developer Peak", icon: "fa-code" },
+        { id: 6, name: "Cyberpunk Glow", icon: "fa-bolt" },
+        { id: 7, name: "Gradient Flow", icon: "fa-water" },
+        { id: 8, name: "Neon Tech Grid", icon: "fa-microchip" },
+        { id: 9, name: "Classic Portfolio", icon: "fa-user-tie" },
+        { id: 10, name: "Ultimate FullStack", icon: "fa-database" }
+    ];
+
+    designs.forEach(temp => {
+        const card = document.createElement('div');
+        card.className = 'template-card';
+
+        // Dynamic TID formatting (01, 02... 10)
+        const displayId = temp.id < 10 ? `0${temp.id}` : temp.id;
+
+        card.innerHTML = `
+            <div class="badge">TID: ${displayId}</div>
+            <div class="preview-box"><i class="fas ${temp.icon}"></i></div>
+            <div class="details">
+                <h3>${temp.name}</h3>
+                <button class="select-btn" onclick="selectTemplate(${temp.id})">Select Design</button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    function selectTemplate(id) {
+        localStorage.setItem('selectedTemplateId', id);
+        // Clean sync token underscore route path
+        window.location.href = "/portfolio_form";
+    }
+</script>
+</body>
+</html>

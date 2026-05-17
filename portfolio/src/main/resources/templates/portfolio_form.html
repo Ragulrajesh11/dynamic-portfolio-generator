@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fill Details | Portfoliify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(-45deg, #0f172a, #1e1b4b, #1e3a8a, #0f172a); background-size: 400% 400%; animation: gradientBG 15s ease infinite; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px 20px; color: white; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .form-container { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(20px); padding: 40px; border-radius: 30px; width: 100%; max-width: 800px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        h2 { text-align: center; margin-bottom: 30px; font-weight: 800; background: linear-gradient(to right, #818cf8, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full-width { grid-column: span 2; }
+        .section-header { grid-column: span 2; margin-top: 15px; color: #38bdf8; font-weight: 600; border-bottom: 1px solid rgba(56, 189, 248, 0.3); padding-bottom: 5px; }
+        label { display: block; margin-bottom: 8px; font-size: 0.85rem; color: #94a3b8; }
+        input, textarea { width: 100%; padding: 12px 15px; margin-bottom: 10px; background: rgba(15, 23, 42, 0.8); border: 1px solid #334155; border-radius: 12px; color: white; outline: none; }
+        .submit-btn { grid-column: span 2; background: linear-gradient(to right, #6366f1, #a855f7); color: white; border: none; padding: 18px; border-radius: 15px; font-weight: 700; cursor: pointer; margin-top: 25px; }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2><i class="fas fa-edit"></i> Portfolio Details</h2>
+    <form action="/api/portfolio/generate" method="POST">
+        <input type="hidden" name="templateId" id="templateInput">
+        <div class="form-grid">
+            <div class="section-header"><i class="fas fa-envelope"></i> Delivery Info</div>
+            <div class="full-width">
+                <label>Confirm Your Email (Portfolio will be sent here)</label>
+                <input type="email" name="userEmail" placeholder="portfolio@gmail.com" required>
+            </div>
+            <div class="section-header"><i class="fas fa-user"></i> Professional Summary</div>
+            <div><label>Full Name</label><input type="text" name="fullName" placeholder="Ragul M" required></div>
+            <div><label>Professional Title</label><input type="text" name="title" placeholder="Java Full Stack Developer" required></div>
+            <div class="full-width"><label>About Me</label><textarea name="about" rows="3" placeholder="Tell the world about your expertise..."></textarea></div>
+            <div class="section-header"><i class="fas fa-code-branch"></i> Showcase</div>
+            <div><label>Main Project Name</label><input type="text" name="projectName" placeholder="Portfoliify System"></div>
+            <div><label>Top Skills (Comma separated)</label><input type="text" name="skills" placeholder="Java, Spring Boot, React, MySQL"></div>
+            <div class="full-width"><label>Project Description</label><textarea name="projectDesc" rows="2" placeholder="Briefly explain what you built..."></textarea></div>
+            <div class="section-header"><i class="fas fa-share-alt"></i> Connect With Me</div>
+            <div><label><i class="fab fa-linkedin"></i> LinkedIn URL</label><input type="url" name="linkedin" placeholder="https://linkedin.com"></div>
+            <div><label><i class="fab fa-github"></i> GitHub URL</label><input type="url" name="github" placeholder="https://github.com"></div>
+            <div class="full-width"><label><i class="fab fa-instagram"></i> Instagram URL</label><input type="url" name="instagram" placeholder="https://instagram.com"></div>
+            <button type="submit" class="submit-btn">Generate & Send My Portfolio <i class="fas fa-magic" style="margin-left: 10px;"></i></button>
+        </div>
+    </form>
+</div>
+<script>
+    const selectedId = localStorage.getItem('selectedTemplateId');
+    if (selectedId) { document.getElementById('templateInput').value = selectedId; }
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #000000; color: #00ff66; font-family: 'Courier New', monospace; padding: 60px 20px; line-height: 1.6; }
+        .web-wrapper { max-width: 800px; margin: auto; position: relative; }
+        .terminal-header { border-bottom: 2px dashed #00ff66; padding-bottom: 20px; margin-bottom: 40px; }
+        .blink { animation: blinker 1s linear infinite; font-weight: bold; }
+        @keyframes blinker { 50% { opacity: 0; } }
+        h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 10px; color: #ffffff; }
+        .title { font-size: 1.2rem; color: #00ffff; margin-bottom: 30px; }
+        h3 { font-size: 1.1rem; margin: 40px 0 15px 0; color: #ff0055; text-transform: uppercase; }
+        p { color: #a2fcd4; font-size: 1rem; text-align: justify; }
+        .project-banner { background: #0a0a14; border: 1px solid #00ff66; padding: 25px; border-radius: 4px; margin-top: 15px; }
+        .skills-tag { display: inline-block; background: #111; border: 1px solid #ff0055; color: #ff0055; padding: 6px 14px; margin: 5px; font-size: 0.85rem; }
+        .btn-link { display: inline-block; margin-top: 40px; margin-right: 20px; color: #00ffff; text-decoration: none; border-bottom: 1px solid #00ffff; padding-bottom: 4px; transition: 0.3s; }
+        .btn-link:hover { color: #ffffff; border-color: #ffffff; }
+    </style>
+</head>
+<body>
+<div class="web-wrapper">
+    <div class="terminal-header">
+        <h1>[fullName]<span class="blink">_</span></h1>
+        <div class="title">&gt;&gt; [title]</div>
+    </div>
+    <h3>01 // Core Biography</h3>
+    <p>[about]</p>
+
+    <h3>02 // System Architecture Built</h3>
+    <div class="project-banner">
+        <h4 style="color: #ffffff; margin-bottom: 8px;">&gt; [projectName]</h4>
+        <p>[projectDesc]</p>
+    </div>
+
+    <h3>03 // Compiled Skillsets</h3>
+    <div style="margin-left: -5px;">
+        <span class="skills-tag">[skills]</span>
+    </div>
+
+    <a href="[linkedin]" class="btn-link">[ LINKEDIN ]</a>
+    <a href="[github]" class="btn-link">[ GITHUB ]</a>
+</div>
+</body>
+</html>
